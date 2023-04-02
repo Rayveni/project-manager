@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+/*@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');*/
+@import "../vendor/fontawesome/css/all.min.css";
+
+@mixin transitionAll() {
+  transition: all 1.3s ease-out;
+}
+
+$color: #222e3c;
+$color-d: darken($color, 5%);
+$color-l: lighten($color, 7.5%);
+$el_size: 2vmin;
+$color-main:#f1f2f9;
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  
+}
+
+body {
+  font: $el_size 'Open Sans', sans-serif;
+  color: #777;
+}
+
+a {
+  cursor: pointer;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+
+}
+
+main {
+  width: 100%;
+  order: 2;
+  background-color: $color-main;
+  padding: 10px;
+ 
+}
+
+nav {
+  order:1;
+  background: $color;
+  flex-shrink: 0;
+  margin-top: 0;
+
+  ul { 
+    list-style: none;
+    padding: 0;
+    margin-top: 0;
+    align-items:center;
+    justify-content:center;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+     
+    li{
+      
+      margin: 0 0 calc($el_size/3) 0;
+      /* top | right | bottom | left */
+      padding: $el_size 0 $el_size  $el_size;
+      width: 100%;
+      a:link, a:visited {
+        text-decoration: none;
+        color: #fff;
+      }
+      span {
+        padding-left:$el_size;
+      }
+    }
+    li:hover {
+      background-color: $color-l;
+      tooltip {
+        visibility: visible;
+     
+      } 
+    }
+    tooltip {
+      visibility: hidden;
+      background-color: $color-l ;
+      position: absolute;
+      display: inline-block;
+      color:$color-main;
+      margin-left: calc($el_size/2);
+      margin-top: -$el_size;
+      padding:  $el_size $el_size $el_size  $el_size;
+      z-index: 1;
+
+    } 
+  }
+
+}
+
+.is-collapsed {
+  display: none; 
+}

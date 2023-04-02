@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>index</title>
+</head>
+
+<link rel="stylesheet" href="static/css/index.css">
+
+<body>
+  <div class="flex-container">
+    <main class="main">
+      <article>
+        <h1>Title</h1>
+        <p>Some article content to fill the page.</p>
+        <h2 id="topic-1">Topic 1</h2>
+        <p>Information on topic 1</p>
+        <h2 id="topic-2">Topic 2</h2>
+        <p>Information on topic 2</p>
+        <h2 id="topic-3">Topic 3</h2>
+        <p>Information on topic 3</p>
+      </article>
+    </main>
+    <nav id="sidebar">
+
+      <ul>
+        <li><a onclick="collapse_sidebar()"><i class="fa fa-bars"></i><span>Hide</span><tooltip class="is-collapsed">Expand</tooltip></a></li>
+        <li><a href="#topic-3"><i class="fa fa-th"></i><span>Dashboards</span><tooltip class="is-collapsed">Dashboards</tooltip></a></li>
+        <li><a href="#topic-3"><i class="fa fa-signal"></i><span>Statistics</span><tooltip class="is-collapsed">Statistics</tooltip></a></li>
+        <li><a href="#topic-3"><i class="fa fa-road"></i><span>Roadmap</span><tooltip class="is-collapsed">Roadmap</tooltip></a></li>
+         <li><a href="#topic-3"><i class="fa fa-flag"></i><span>Milestones</span><tooltip class="is-collapsed">Milestones</tooltip></a></li>
+
+        
+      </ul>
+    </nav>
+
+  </div>
+  
+</body>
+
+<script src="static/js/index.js"></script>
+
+</html>

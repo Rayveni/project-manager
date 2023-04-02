@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+/*@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');*/
+@import "../vendor/fontawesome/css/all.min.css";
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font: 2vmin "Open Sans", sans-serif;
+  color: #777;
+}
+
+a {
+  cursor: pointer;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+main {
+  width: 100%;
+  order: 2;
+  background-color: #f1f2f9;
+  padding: 10px;
+}
+
+nav {
+  order: 1;
+  background: #222e3c;
+  flex-shrink: 0;
+  margin-top: 0;
+}
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 0;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+}
+nav ul li {
+  margin: 0 0 0.6666666667vmin 0;
+  /* top | right | bottom | left */
+  padding: 2vmin 0 2vmin 2vmin;
+  width: 100%;
+}
+nav ul li a:link, nav ul li a:visited {
+  text-decoration: none;
+  color: #fff;
+}
+nav ul li span {
+  padding-left: 2vmin;
+}
+nav ul li:hover {
+  background-color: #304154;
+}
+nav ul li:hover tooltip {
+  visibility: visible;
+}
+nav ul tooltip {
+  visibility: hidden;
+  background-color: #304154;
+  position: absolute;
+  display: inline-block;
+  color: #f1f2f9;
+  margin-left: 1vmin;
+  margin-top: -2vmin;
+  padding: 2vmin 2vmin 2vmin 2vmin;
+  z-index: 1;
+}
+
+.is-collapsed {
+  display: none;
+}/*# sourceMappingURL=index.css.map */
