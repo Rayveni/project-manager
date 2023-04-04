@@ -6,7 +6,7 @@ app.secret_key = 'random string'
 app.static_folder = 'static'
 app.config['JSON_AS_ASCII'] = False
 app.template_folder='templates'
-app.register_blueprint(api_bp,url_prefix='/api2')
+app.register_blueprint(api_bp,url_prefix='/api')
 @app.route("/", methods =["GET", "POST"])
 def index_func():
     data={'title':'index'}

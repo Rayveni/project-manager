@@ -1,12 +1,13 @@
+var calendar;
 document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar');
-    var calendar = new FullCalendar.Calendar(calendarEl, {
+    let calendarEl = document.getElementById('calendar');
+      calendar = new FullCalendar.Calendar(calendarEl, {
       initialView: 'dayGridMonth',
       firstDay: 1,
       headerToolbar: {
         left: 'prev,next today',
         center: 'title',//prevYear,nextYear
-        right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+        right: 'multiMonthYear,dayGridMonth,timeGridWeek,timeGridDay,listMonth,listYear'
       },
       businessHours: {
         // days of week. an array of zero-based day of week integers (0=Sunday)

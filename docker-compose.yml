@@ -9,8 +9,12 @@ services:
     # (default stop signal from Compose is SIGTERM)
     stop_signal: SIGINT 
     environment:
-      - TZ=${timezone} 
-      - redis_url=${redis_url}       
+      - TZ=${timezone}
+      - gapi_secret_path=${gapi_secret_path}
+    # secrets block only for 'web' service
+    secrets: 
+      - source: gapi_secret
+        target: "${gapi_secret_path}"               
     volumes: 
       - type: bind
         source: ${code_source}
@@ -18,4 +22,8 @@ services:
     command: python server.py           
     ports:
       - "${app_ports}"
- 
+
+# top level secrets block
+secrets:
+  gapi_secret:
+    file: "${gapi_secret_file}"
