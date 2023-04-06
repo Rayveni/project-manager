@@ -1,4 +1,5 @@
 var calendar;
+const calendar_list_url = "/api/calendar/list?type=settings";
 document.addEventListener('DOMContentLoaded', function() {
     let calendarEl = document.getElementById('calendar');
       calendar = new FullCalendar.Calendar(calendarEl, {
@@ -19,4 +20,21 @@ document.addEventListener('DOMContentLoaded', function() {
      // hiddenDays: [ 2, 4 ] // hide Tuesdays and Thursdays
     });
     calendar.render();
-  });
+});
+  
+var data;
+async function get_calendar_list(url) {
+    
+  // Storing response
+  const response = await fetch(url);
+  
+  // Storing data in form of JSON
+   data = await response.json();
+  console.log(data);
+  if (response) {
+      //hideloader();
+  }
+  show(data);
+}
+// Calling that async function
+getapi(calendar_list_url);

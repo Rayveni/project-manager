@@ -11,6 +11,7 @@ services:
     environment:
       - TZ=${timezone}
       - gapi_secret_path=${gapi_secret_path}
+      - g_calendar_settings=/app/data/g_calendar.json
     # secrets block only for 'web' service
     secrets: 
       - source: gapi_secret
@@ -18,7 +19,10 @@ services:
     volumes: 
       - type: bind
         source: ${code_source}
-        target: /app  
+        target: /app/backend 
+      - type: bind
+        source: ${data_source}
+        target: /app/data        
     command: python server.py           
     ports:
       - "${app_ports}"
