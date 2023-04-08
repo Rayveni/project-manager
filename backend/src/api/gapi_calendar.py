@@ -39,7 +39,7 @@ def format_event(event:dict,event_color:str=None)->dict:
         #'textColor':,The eventTextColor override for this specific event.
         #'extendedProps':,A plain object holding miscellaneous other properties specified during parsing. Receives properties in the explicitly given extendedProps hash as well as other non-standard properties.
         #'source':,A reference to the Event Source this event came from. If the event was added dynamically via addEvent, and the source parameter was not specified, this value will be null.
-        'description': event.get('description')     
+        'description': event.get('description','')     
     }
     if event_color:
         res['color']=event_color

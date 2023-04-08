@@ -87,6 +87,7 @@ nav ul tooltip {
   border-radius: 2vmin;
   border: solid #222e3c;
   flex-direction: column;
+  word-wrap: break-word;
 }
 .card hr {
   display: block;
@@ -95,8 +96,14 @@ nav ul tooltip {
   background-color: #304154;
   margin: 0px;
 }
+.card .card_title {
+  padding: 0 1vmin 1vmin 1vmin;
+}
 .card .card_body {
   overflow-x: hidden;
   overflow-y: auto;
-  margin-bottom: 0.5vmin;
+  padding: 1vmin;
+  text-align: left;
+  width: 100%;
+  height: 100%;
 }/*# sourceMappingURL=index.css.map */

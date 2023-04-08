@@ -8,6 +8,9 @@ main {
 }
 .fc-daygrid-event-harness:hover .event_tooltip{
   display: block;
+  visibility: visible;
+  cursor: default;
+
 }
 
 .fc-daygrid-event{
@@ -17,7 +20,9 @@ main {
 }
 .event_tooltip {
   display: none;
-
+  //visibility: hidden;
+  white-space: pre-wrap;
+  text-decoration: none;
   width: 35vw;
   height: 60vh;
 
