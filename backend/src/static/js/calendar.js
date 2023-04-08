@@ -57,9 +57,9 @@ function position_tooltip() {
     tooltip_el.style.left = -tooltip_el.offsetWidth + 'px';
   }
 
-  if ( bottom_h <tooltip_el.offsetHeight/2) {
+  if ( bottom_h <tooltip_el.offsetHeight) {
 
-    tooltip_el.style.top = -tooltip_el.offsetHeight + 'px';
+    tooltip_el.style.top = bottom_h-tooltip_el.offsetHeight + 'px';
   }
  
   
