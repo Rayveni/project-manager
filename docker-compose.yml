@@ -1,0 +1,33 @@
+version: "3.91"
+services:
+  app:
+    build:
+      context: ./backend/ 
+      dockerfile: Dockerfile      
+    image: local_image/project_app       
+    # flask requires SIGINT to stop gracefully
+    # (default stop signal from Compose is SIGTERM)
+    stop_signal: SIGINT 
+    environment:
+      - TZ=${timezone}
+      - gapi_secret_path=${gapi_secret_path}
+      - g_calendar_settings=/app/data/g_calendar.json
+    # secrets block only for 'web' service
+    secrets: 
+      - source: gapi_secret
+        target: "${gapi_secret_path}"               
+    volumes: 
+      - type: bind
+        source: ${code_source}
+        target: /app/backend 
+      - type: bind
+        source: ${data_source}
+        target: /app/data        
+    command: python server.py           
+    ports:
+      - "${app_ports}"
+
+# top level secrets block
+secrets:
+  gapi_secret:
+    file: "${gapi_secret_file}"

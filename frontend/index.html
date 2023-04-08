@@ -6,21 +6,12 @@
     <title>index</title>
 </head>
 
-<link rel="stylesheet" href="static/css/index.css">
-
+<link rel="stylesheet" href="../backend/src/static/css/index.css">
+<link rel="stylesheet" href="../backend/src/static/css/calendar.css">
 <body>
   <div class="flex-container">
     <main class="main">
-      <article>
-        <h1>Title</h1>
-        <p>Some article content to fill the page.</p>
-        <h2 id="topic-1">Topic 1</h2>
-        <p>Information on topic 1</p>
-        <h2 id="topic-2">Topic 2</h2>
-        <p>Information on topic 2</p>
-        <h2 id="topic-3">Topic 3</h2>
-        <p>Information on topic 3</p>
-      </article>
+       <div id="calendar"></div>
     </main>
     <nav id="sidebar">
 
@@ -39,6 +30,8 @@
   
 </body>
 
-<script src="static/js/index.js"></script>
+<script src="../backend/src/static/js/index.js"></script>
+<script src="../backend/src/static/vendor/fullcalendar-6.1.5/index.global.min.js"></script>
+<script src="../backend/src/static/js/calendar.js"></script>
 
 </html>

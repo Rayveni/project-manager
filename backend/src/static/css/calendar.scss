@@ -1,0 +1,56 @@
+#calendar {
+  width:100%;
+  height: 100%;
+}
+
+main {
+  position:relative;
+}
+.fc-daygrid-event-harness:hover .event_tooltip{
+  display: block;
+  visibility: visible;
+  cursor: default;
+
+}
+
+.fc-daygrid-event{
+  position:static;
+  z-index: 0;
+
+}
+.event_tooltip {
+  display: none;
+  //visibility: hidden;
+  white-space: pre-wrap;
+  text-decoration: none;
+  width: 35vw;
+  height: 60vh;
+
+  text-align: center;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1111;
+  left:100%;
+  top:0%;
+
+  margin-bottom: -1px;
+}
+
+.fc-scrollgrid{
+z-index: 1;
+}
+/* Tooltip arrow 
+.event_tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+*/
+
+
+
