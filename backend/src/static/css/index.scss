@@ -99,3 +99,25 @@ nav {
 .is-collapsed {
   display: none; 
 }
+
+.card{
+  display: flex;
+  z-index: 100000;
+  background-color: $color-main;
+  border-radius: $el_size;
+  border: solid $color;
+  flex-direction: column;
+  hr{
+    display: block;
+    border: none;
+    height: 3px;
+    background-color: $color-l;
+    margin: 0px;
+}
+.card_body{
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin-bottom: $el_size/4;
+ 
+}
+}

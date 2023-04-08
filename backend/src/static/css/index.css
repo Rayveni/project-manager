@@ -78,4 +78,25 @@ nav ul tooltip {
 
 .is-collapsed {
   display: none;
+}
+
+.card {
+  display: flex;
+  z-index: 100000;
+  background-color: #f1f2f9;
+  border-radius: 2vmin;
+  border: solid #222e3c;
+  flex-direction: column;
+}
+.card hr {
+  display: block;
+  border: none;
+  height: 3px;
+  background-color: #304154;
+  margin: 0px;
+}
+.card .card_body {
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin-bottom: 0.5vmin;
 }/*# sourceMappingURL=index.css.map */

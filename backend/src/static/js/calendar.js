@@ -6,7 +6,12 @@ document.addEventListener('DOMContentLoaded', function () {
   let calendarEl = document.getElementById('calendar');
   calendar = new FullCalendar.Calendar(calendarEl, {
     eventDidMount: function (info) {
-      info.el.innerHTML += '<div class="event_tooltip">' + info.event.extendedProps.description + '</div>' 
+      info.el.innerHTML += //'<div class="event_tooltip">' + '</div>' 
+      
+       // info.event.extendedProps.description +
+       
+        '<div class="card event_tooltip"><div class="card_title">Card</div><hr/><div class="card_body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div></div>'
+        info.el.addEventListener("mouseover", position_tooltip);
     },
     events: events_list,
     eventTimeFormat: {
@@ -40,6 +45,25 @@ document.addEventListener('DOMContentLoaded', function () {
   calendar.render();
 });
 
+function position_tooltip() {
+  let tooltip_rect = this.getBoundingClientRect(),
+    tooltip_el=this.querySelector(".event_tooltip");
+  let y=tooltip_rect.y,
+      bottom_h = window.innerHeight - y-tooltip_rect.height;
+
+  //console.log(tooltip_rect.right / (tooltip_rect.width + tooltip_rect.left + tooltip_rect.right));
+  if (tooltip_rect.x > window.innerWidth/2) {
+  
+    tooltip_el.style.left = -tooltip_el.offsetWidth + 'px';
+  }
+
+  if ( bottom_h <tooltip_el.offsetHeight/2) {
+
+    tooltip_el.style.top = -tooltip_el.offsetHeight + 'px';
+  }
+ 
+  
+}
 var data;
 async function get_calendar_list(url) { // Storing response
   const response = await fetch(url);

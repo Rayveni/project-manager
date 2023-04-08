@@ -24,7 +24,7 @@ def format_event(event:dict,event_color:str=None)->dict:
         #Note: This value is exclusive. For example, an event with the end of 2018-09-03 will appear to span through 2018-09-02 but end before the start of 2018-09-03. See how events are are parsed from a plain object for further details.
         #'startStr':,An ISO8601 string representation of the start date. If the event is all-day, there will not be a time part.
         #'endStr':,An ISO8601 string representation of the end date. If the event is all-day, there will not be a time part.
-        'title':event['summary'],#String. The text that will appear on an event.
+        'title':event.get('summary',''),#String. The text that will appear on an event.
         'url':event['htmlLink'],#String. A URL that will be visited when this event is clicked by the user. For more information on controlling this behavior, see the eventClick callback.
         #'classNames':,An array of strings like [ 'myclass1', myclass2' ]. Determines which HTML classNames will be attached to the rendered event.
         #'editable':,Boolean (true or false) or null. The value overriding the editable setting for this specific event.
