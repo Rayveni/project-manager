@@ -31,23 +31,44 @@ a {
 .flex-container {
   display: flex;
   flex-direction: row;
+  margin-top: 0;
   height: 100%;
-
 }
 
 main {
   width: 100%;
+  height: 100%;
   order: 2;
   background-color: $color-main;
-  padding: 10px;
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
  
+
+ 
+}
+#top_menu {
+  width: 100%;
+  height: $el_size*5;
+  background-color: blue;
+  color: red;
+
+}
+
+#content {
+  height: 100%;
+  padding: 5px;
+  background-color: aquamarine;
+  color: red;
 }
 
 nav {
   order:1;
   background: $color;
   flex-shrink: 0;
-  margin-top: 0;
+  margin-right: 2px;
+ 
 
   ul { 
     list-style: none;
@@ -126,7 +147,5 @@ nav {
   text-align: left;
   width: 100%;
   height: 100%;
- 
- 
 }
 }
