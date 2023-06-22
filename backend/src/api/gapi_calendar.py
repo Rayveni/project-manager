@@ -1,7 +1,8 @@
 from google.oauth2 import service_account
+from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from os import getenv
-from ..commons import read_json
+#from ..commons import read_json
 
 def get_calendar_list():
     return read_json(getenv('g_calendar_settings'))
@@ -46,17 +47,18 @@ def format_event(event:dict,event_color:str=None)->dict:
     return res
 
 class google_calendar:
-    __slots__='service','scopes'
+    __slots__='calendar_service','scopes','tasks_service'
     def __init__(self,secret_path:str,api_version:str='v3'):
-        self.scopes=['https://www.googleapis.com/auth/calendar']
+        self.scopes=['https://www.googleapis.com/auth/calendar','https://www.googleapis.com/auth/tasks','https://www.googleapis.com/auth/tasks.readonly']
         credentials=service_account.Credentials.from_service_account_file(filename=secret_path,scopes=self.scopes)
-        self.service=build('calendar',api_version,credentials=credentials)
+        self.calendar_service=build('calendar',api_version,credentials=credentials)
+        self.tasks_service=build('tasks','v1',credentials=credentials)
         
     def calendar_list(self):
-        return self.service.calendarList().list().execute()
+        return self.calendar_service.calendarList().list().execute()
     
     def add_calendar(self,calendar_id:str):
-        return self.service.calendarList().insert(body={'id':calendar_id}).execute()
+        return self.calendar_service.calendarList().insert(body={'id':calendar_id}).execute()
 
     def events(self,calendar_id:str,start_date:str=None,end_date:str=None):
         """
@@ -70,10 +72,53 @@ class google_calendar:
         """     
         page_token,res_events = None,[]
         while True:
-            events = self.service.events().list(calendarId=calendar_id, pageToken=page_token,timeMin=start_date,timeMax=end_date).execute()
+            events = self.calendar_service.events().list(calendarId=calendar_id, pageToken=page_token,timeMin=start_date,timeMax=end_date).execute()
             res_events+=events.get('items')
             page_token = events.get('nextPageToken')
             if not page_token:
                  break
         events_info={key:events[key] for key in events if key!='items'}
         return {'events_info':events_info,'events':res_events}
+    
+"""
+"""
+#gc=google_calendar(r'C:\Users\volochkov\Downloads\client_secret_729246267804-1sel7gtd8cktucau1aujkufh0dvf29us.apps.googleusercontent.comcl.json')
+#tasks_service=gc.tasks_service
+#results = tasks_service.tasklists().list().execute()
+#print(results)
+#print(results['items'][0])
+#print(dir(tasks_service.tasks()))
+#print(tasks_service.tasks().list(tasklist='MDE3NDE5NzM4NjU4MjY5MjYxMTc6MDow').execute())
+
+SCOPES=['https://www.googleapis.com/auth/tasks']
+#creds = Credentials.from_authorized_user_file(r'C:\Users\volochkov\Downloads\calendar.json')
+
+import os
+from google.auth.transport.requests import Request
+from google.oauth2.credentials import Credentials
+from google_auth_oauthlib.flow import InstalledAppFlow
+from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
+
+# If modifying these scopes, delete the file token.json.
+
+
+creds = None
+
+if os.path.exists('token.json'):
+    creds = Credentials.from_authorized_user_file('token.json', SCOPES)
+
+if not creds or not creds.valid:
+    if creds and creds.expired and creds.refresh_token:
+        creds.refresh(Request())
+    else:
+        flow = InstalledAppFlow.from_client_secrets_file(r'C:\Users\volochkov\Downloads\tasks_api.json', SCOPES)
+        creds = flow.run_local_server(port=0)
+        with open('token.json', 'w') as token:
+            token.write(creds.to_json())
+
+
+service = build('tasks', 'v1', credentials=creds)
+results = service.tasklists().list(maxResults=10).execute()
+items = results.get('items', [])
+print(results)

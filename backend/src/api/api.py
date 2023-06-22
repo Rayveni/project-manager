@@ -32,7 +32,7 @@ def calendar_events():
                          ]
    
     calendar_list=[{'id':"ru.russian#holiday@group.v.calendar.google.com",'color':'blue'},
-                  { 'id':"62bb6be75cd5ea029a193e5ba62a5bd3e1c8224ed938d9516863296289a937f2@group.calendar.google.com",'color':'purple'}
+                  { 'id':"is.volochkov@gmail.com",'color':'purple'}
                   ]
 
     formatted_events=list(map(_worker,calendar_list))
