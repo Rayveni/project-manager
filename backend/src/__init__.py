@@ -29,7 +29,7 @@ def start_timer():
     
 @app.after_request
 def after_request(response):
-    if (request.path == "/favicon.ico" or ("static" in request.full_path)):
+    if (request.path == "/favicon.ico"):
         return response
     timestamp_and_duration = g.start[0]+str(round(time() - g.start[1], 2))
     logger.error('%s %s %s %s %s %s', timestamp_and_duration, request.remote_addr, request.method, request.scheme, request.full_path, response.status)
@@ -37,7 +37,7 @@ def after_request(response):
 
 @app.errorhandler(Exception)
 def exceptions(e):
-    if (request.path == "/favicon.ico" or ("static" in request.full_path)):
+    if (request.path == "/favicon.ico"):
         tb = traceback.format_exc()
         timestamp = strftime('[%Y-%b-%d %H:%M]')
         logger.error('%s %s %s %s %s 5xx INTERNAL SERVER ERROR\n%s', timestamp, request.remote_addr, request.method, request.scheme, request.full_path, tb)

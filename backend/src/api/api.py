@@ -1,7 +1,8 @@
 from flask import jsonify,request
+from os import getenv
 from . import api_bp
 from .gapi_calendar import *
-g_calendar=google_calendar(get_secret_path())
+g_calendar=google_calendar(getenv('gapi_secret_path'))
 
 
 @api_bp.route("/calendar", methods=['GET', 'POST'])
